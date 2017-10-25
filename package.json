@@ -1,0 +1,25 @@
+{
+  "name": "robinbot",
+  "version": "0.9.0",
+  "description": "robin web crawling engine with nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/robincloud/robinbot.git"
+  },
+  "keywords": [
+    "robin",
+    "crawling",
+    "robot",
+    "task"
+  ],
+  "author": "dujung",
+  "license": "ALv2",
+  "bugs": {
+    "url": "https://github.com/robincloud/robinbot/issues"
+  },
+  "homepage": "https://github.com/robincloud/robinbot#readme"
+}
