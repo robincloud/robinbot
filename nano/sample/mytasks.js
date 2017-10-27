@@ -50,9 +50,12 @@ var _root = typeof global != 'undefined' ? global : window;		// global for node,
 	var _err = R.err;           // post to remote server with ERROR
 	var _inf = R.inf;           // post to remote server with INFO
 
+	/**
+	 * the 1st task as initial state.
+	 */
 	T({
 		id : 0,	name : 'robin.1st',
-		url : "wait:1", param : {}, _next : 0,
+		url : "wait:1",
 		enter : function(data){
 			var thiz = this;
 			_.handle_enter(thiz);
@@ -62,9 +65,46 @@ var _root = typeof global != 'undefined' ? global : window;		// global for node,
 			var thiz = this;
 			_.handle_finish(thiz, data);
 			thiz._log('HELLO ROBIN!')
-			return true;
+			
+			// next task state
+			var next = 1;
+			if (next)
+			{
+				//! on callback from previous state.
+				T[next].callback = function(err, title){
+
+					thiz._log('title found =', title);
+					return true;
+				}
+			}
+			return next ? next : true;
 		},
 		next : -1
 	})
+
+	/**
+	 * crawling remote webpage.
+	 */
+	T({
+		id : 1,	name : 'robin.github',
+		url : "https://github.com/robincloud/robinbot",
+		enter : function(data){
+			var thiz = this;
+			_.handle_enter(thiz);
+			return true;
+		},
+		finish : function(body, data){
+			var thiz = this;
+			_.handle_finish(thiz, data);
+			//thiz._log('body1 = ', body);
+			_.set_content(body);
+			var fx = _.get_content_fx();					// DOM navigatore.
+			var title = fx('#readme h1').text();
+			thiz._log('readme title = ', title);
+			return thiz.on_final(null, title);				// go back to previous state with 'on_final()'	
+		},
+		next : -1
+	})
+
 
 })(_root);

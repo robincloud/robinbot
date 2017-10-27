@@ -41,12 +41,12 @@
 ////////////////////////////
 
 //! load common file
-var c = require("./common.js");
+var c = require("./nano/common.js");
 
 //! Load main script.
-var f = require('./core/myfetcher.js'),
-    r = require('./core/myutils.js'),
-    t = require('./sample/mytask.js');
+var f = require('./nano/core/myfetcher.js'),
+    r = require('./nano/core/myutils.js'),
+    t = require('./nano/sample/mytasks.js');
 
 
 /////////////////////////////////////////////////////////////
