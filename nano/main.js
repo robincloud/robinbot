@@ -44,9 +44,9 @@
 var c = require("./common.js");
 
 //! Load main script.
-var f = require('./lib/myfetcher.js'),
-    r = require('./lib/mypack-nvs.js'),
-    t = require('./lib/mytask-nvs.js');
+var f = require('./core/myfetcher.js'),
+    r = require('./core/myutils.js'),
+    t = require('./sample/mytask.js');
 
 
 /////////////////////////////////////////////////////////////
